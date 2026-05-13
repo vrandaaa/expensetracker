@@ -1,8 +1,10 @@
 import React from 'react'
-
+import LoginSignup from './pages/Auth/LoginSignup'
 const App = () => {
   return (
-    <div>Hello world, we are back again!!</div>
+    <div>
+      <LoginSignup/>
+    </div>
   )
 }
 
