@@ -1,227 +1,252 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 :root {
-  --powder-petal: #e8d1c5;
-  --powder-petal-2: #eddcd2;
-  --linen: #fff1e6;
-  --parchment: #f0efeb;
-  --powder-petal-3: #eeddd3;
-  --parchment-2: #edede8;
-  --active-blue: rgb(77, 77, 241);
-  --text-dark: #2d2e32;
-  --text-muted: #5f6368;
+    --powder-petal: #e8d1c5;
+    --powder-petal-2: #eddcd2;
+    --linen: #fff1e6;
+    --parchment: #f0efeb;
+    --powder-petal-3: #eeddd3;
+    --parchment-2: #edede8;
+    --active-blue: rgb(77, 77, 241);
+    --text-dark: #2d2e32;
+    --text-muted: #5f6368;
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+   font-family: 'poppins';
 }
 
 /* 1. Seamless & Textured Background */
 .wrapper {
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  background-color: var(--parchment-2);
-  background-image: 
-    radial-gradient(at 0% 0%, rgba(232, 209, 197, 0.3) 0px, transparent 50%),
-    radial-gradient(at 100% 100%, rgba(77, 77, 241, 0.05) 0px, transparent 50%);
-  overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    background-color: var(--parchment-2);
+    background-image:
+        radial-gradient(at 0% 0%, rgba(232, 209, 197, 0.3) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(77, 77, 241, 0.05) 0px, transparent 50%);
+    overflow: hidden;
 }
 
 /* 2. Left Side: Form Section */
 .left-side {
-  flex: 0.75;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 20; /* High z-index to stay above background decor */
-  padding: 20px;
+    flex: 0.75;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+    /* High z-index to stay above background decor */
+    padding: 20px;
 }
 
 .formContainer {
-  width: 100%;
-  max-width: 400px;
-  padding: 45px;
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(12px);
-  border-radius: 28px;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
-  border: 1px solid white;
+    width: 100%;
+    max-width: 400px;
+    padding: 45px;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(12px);
+    border-radius: 28px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
+    border: 1px solid white;
 }
 
 .buttons {
-  display: flex;
-  background: var(--parchment);
-  padding: 6px;
-  border-radius: 14px;
-  margin-bottom: 30px;
+    display: flex;
+    background: var(--parchment);
+    padding: 6px;
+    border-radius: 14px;
+    margin-bottom: 30px;
 }
 
 .buttons button {
-  flex: 1;
-  padding: 12px;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  font-weight: 700;
-  border-radius: 10px;
-  transition: all 0.25s ease;
-  color: var(--text-muted);
+    flex: 1;
+    padding: 12px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-weight: 700;
+    border-radius: 10px;
+    transition: all 0.25s ease;
+    color: var(--text-muted);
 }
 
 .buttons button.active {
-  background-color: white;
-  color: var(--active-blue);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    background-color: white;
+    color: var(--active-blue);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 form input {
-  padding: 15px 18px;
-  border: 1px solid #e0e0e0;
-  border-radius: 12px;
-  outline: none;
-  font-size: 1rem;
-  background: #fdfdfd;
-  transition: 0.3s;
+    padding: 15px 18px;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    outline: none;
+    font-size: 1rem;
+    background: #fdfdfd;
+    transition: 0.3s;
 }
 
 form input:focus {
-  border-color: var(--active-blue);
-  background: white;
-  box-shadow: 0 0 0 4px rgba(77, 77, 241, 0.1);
+    border-color: var(--active-blue);
+    background: white;
+    box-shadow: 0 0 0 4px rgba(77, 77, 241, 0.1);
 }
 
 .submitBtn {
-  margin-top: 10px;
-  padding: 16px;
-  border: none;
-  border-radius: 12px;
-  background-color: var(--active-blue);
-  color: white;
-  font-weight: 700;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: 0.3s;
+    margin-top: 10px;
+    padding: 16px;
+    border: none;
+    border-radius: 12px;
+    background-color: var(--active-blue);
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
 .submitBtn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(77, 77, 241, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(77, 77, 241, 0.3);
 }
 
 form a {
-  text-decoration: none;
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  text-align: center;
+    text-decoration: none;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    text-align: center;
 }
 
 form span {
-  color: var(--active-blue);
-  font-weight: 700;
-  cursor: pointer;
+    color: var(--active-blue);
+    font-weight: 700;
+    cursor: pointer;
 }
 
 /* 3. Right Side: Professional Visuals */
 .imageSide {
-  flex: 1.25; 
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 60px;
+    flex: 1.25;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px;
 }
 
 .right-side-text {
-  position: relative;
-  z-index: 15; /* Sits above images */
-  text-align: center;
-  max-width: 520px;
-  /* Adds a subtle lift to keep text readable against sharp images */
-  text-shadow: 0 2px 10px rgba(255, 255, 255, 0.5); 
+    position: relative;
+    z-index: 15;
+    /* Sits above images */
+    text-align: center;
+    max-width: 520px;
+    /* Adds a subtle lift to keep text readable against sharp images */
+    text-shadow: 0 2px 10px rgba(255, 255, 255, 0.5);
+    user-select: none;
 }
 
 .right-side-text h2 {
-  font-size: 3.2rem;
-  color: var(--text-dark);
-  font-weight: 900;
-  line-height: 1.1;
-  letter-spacing: -2px;
-  margin-bottom: 24px;
-  background: linear-gradient(135deg, var(--text-dark) 0%, var(--active-blue) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+    font-size: 3.2rem;
+    color: var(--text-dark);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -2px;
+    margin-bottom: 24px;
+    background: linear-gradient(135deg, var(--text-dark) 0%, var(--active-blue) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .right-side-text p {
-  font-size: 1.25rem;
-  color: var(--text-muted);
-  line-height: 1.6;
-  font-weight: 500; /* Increased weight slightly for clarity */
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    font-weight: 500;
+    /* Increased weight slightly for clarity */
 }
 
 /* 4. Background Decorative Images */
 .imagesGroup {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1; /* Strictly behind the text */
-  pointer-events: none; /* Text and inputs remain clickable */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    /* Strictly behind the text */
+    pointer-events: none;
+    /* Text and inputs remain clickable */
 }
 
-.billImg, .mmoneyImg {
-  position: absolute;
-  width: 320px;
-  height: auto;
-  opacity: 0.4; /* Lowered base opacity to keep it subtle */
-  filter: blur(8px); /* Higher base blur for "blankness" fix and readability */
-  border-radius: 40px;
-  transition: all 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+.billImg,
+.mmoneyImg {
+    position: absolute;
+    width: 320px;
+    height: auto;
+    opacity: 0.4;
+    /* Lowered base opacity to keep it subtle */
+    filter: blur(8px);
+    /* Higher base blur for "blankness" fix and readability */
+    border-radius: 40px;
+    transition: all 0.8s cubic-bezier(0.2, 1, 0.3, 1);
 }
 
 .billImg {
-  top: 8%;
-  left: 2%;
-  transform: rotate(-12deg);
+    top: 8%;
+    left: 2%;
+    transform: rotate(-12deg);
 }
 
 .mmoneyImg {
-  bottom: 8%;
-  right: 2%;
-  transform: rotate(18deg);
+    bottom: 8%;
+    right: 2%;
+    transform: rotate(18deg);
 }
 
 /* 5. The "Clear View" Transition on Hover */
 .imageSide:hover .billImg,
 .imageSide:hover .mmoneyImg {
-  opacity: 0.6; /* Don't go to 1.0 to ensure text remains readable */
-  filter: blur(0px); /* Removes blur */
+    opacity: 0.6;
+    /* Don't go to 1.0 to ensure text remains readable */
+    filter: blur(0px);
+    /* Removes blur */
 }
 
 .imageSide:hover .billImg {
-  transform: rotate(-5deg) scale(1.05);
+    transform: rotate(-5deg) scale(1.05);
 }
 
 .imageSide:hover .mmoneyImg {
-  transform: rotate(10deg) scale(1.05);
+    transform: rotate(10deg) scale(1.05);
 }
 
 /* Responsive */
 @media (max-width: 1100px) {
-  .right-side-text h2 { font-size: 2.5rem; }
-  .billImg, .mmoneyImg { width: 250px; }
+    .right-side-text h2 {
+        font-size: 2.5rem;
+    }
+
+    .billImg,
+    .mmoneyImg {
+        width: 250px;
+    }
 }
 
 @media (max-width: 900px) {
-  .imageSide { display: none; }
-  .left-side { flex: 1; }
+    .imageSide {
+        display: none;
+    }
+
+    .left-side {
+        flex: 1;
+        background-color: var(--powder-petal-3);
+    }
 }
