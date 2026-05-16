@@ -131,7 +131,24 @@ form span {
     font-weight: 700;
     cursor: pointer;
 }
+.passwordField{
+  position: relative;
+  width: 100%;
+}
 
+.passwordField input{
+  width: 100%;
+  padding-right: 45px;
+}
+
+.eyeIcon{
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: gray;
+}
 /* 3. Right Side: Professional Visuals */
 .imageSide {
     flex: 1.25;
