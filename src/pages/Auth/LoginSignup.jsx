@@ -58,7 +58,7 @@ const LoginSignup = () => {
     if (isValid){
       toast.success("Login Successfull!")
       setTimeout(() => {
-        navigate("/home");
+        navigate("home");
       }, 1500);}
   }
 

@@ -1,11 +1,11 @@
 import React from 'react'
-
-const home = () => {
+import NavBar from '../../components/NavBar'
+const Home = () => {
   return (
     <div>
-      
+      <NavBar/>
     </div>
   )
 }
 
-export default home
+export default Home
