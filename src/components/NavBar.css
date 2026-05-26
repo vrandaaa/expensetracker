@@ -32,8 +32,25 @@ body {
     align-items: center;
     padding: 22px 0;
     box-sizing: border-box;
+    flex-shrink: 0;
+    transition: width 0.3s ease;
+    overflow: hidden;
+    position: relative;
 }
-
+.NavbarContainer.collapsed {
+    width: 80px;
+}
+.NavbarContainer.collapsed .Name,
+.NavbarContainer.collapsed .logout button,
+.NavbarContainer.collapsed .links ul li a span,
+.NavbarContainer.collapsed .profileSection,
+.NavbarContainer.collapsed .editIcon {
+    display: none;
+}
+/* .NavbarContainer.collapsed .profileImg {
+    width: 55px;
+    height: 55px;
+} */
 /* PROFILE SECTION */
 .profileSection{
     display: flex;
@@ -62,7 +79,10 @@ body {
     height: 100%;
     object-fit: cover;
 }
-
+.navIcon{
+    font-size: 18px;
+    min-width: 24px;
+}
 
 .Name {
     font-size: 17px;
@@ -108,6 +128,7 @@ body {
     transition: 0.25s ease;
     display: flex;
     align-items: center;
+    gap: 12px;
 }
 
 /* HOVER */
@@ -147,15 +168,12 @@ body {
     background-color: #ff5f6a;
     color: #f9f3f4;
 }
-.wrapper{
-    display: flex;
-}
 .FaBars{
-    padding: 1rem; 
-    cursor: pointer;  
-}
-.hide{
-     display: none;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    z-index: 100;
 }
 .editIcon{
     position:absolute ;
@@ -163,4 +181,7 @@ body {
     bottom: 3.5rem;
     cursor: pointer;
     color: #2F3A45;
+}
+.bars{
+    cursor: pointer;
 }

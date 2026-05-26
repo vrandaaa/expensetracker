@@ -1,0 +1,45 @@
+/* Clear default Link underlines/colors */
+.contentSide a {
+    text-decoration: none;
+}
+
+.dashboardCard {
+    background-color: #ffffff;
+    border-radius: 14px;
+    padding: 1.5rem;
+    width: 210px;    
+    height: 110px;   
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+    border: 1px solid #F1F5F9;
+    box-shadow: 0 4px 12px rgba(47, 58, 69, 0.03);
+    transition: all 0.2s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.dashboardCard:hover {
+    transform: translateY(-2px);
+    border-color: #E2E8F0;
+    box-shadow: 0 6px 16px rgba(47, 58, 69, 0.06);
+}
+
+.cardTitle {
+    font-size: 13px;
+    color: #64748B;
+    font-weight: 500;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.cardAmount {
+    font-size: 26px; /* Reduced from 34px for balanced sizing */
+    color: #2F3A45;
+    font-weight: 600; /* Replaced aggressive 700 bold weight */
+    margin: 0;
+    letter-spacing: -0.5px;
+}

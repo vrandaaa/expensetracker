@@ -1,0 +1,58 @@
+.homeContainer {
+    display: flex; 
+    min-height: 100vh;
+    width: 100%;
+    background-color: #FAFBFC;
+}
+
+.contentSide {
+    flex: 1;
+    padding: 2.5rem;
+    overflow-y: auto;
+}
+
+/* Subtitle / Welcome Text adjustments */
+.contentSide > p {
+    font-size: 20px;
+    font-weight: 500;
+    color: #1E293B;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.4px;
+}
+
+/* Removed harsh red color - converted to a premium theme accent */
+.userName {
+    color: #6B8A9F; 
+    font-weight: 600;
+}
+
+.cardsContainer {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+}
+
+.addTransactionBtn {
+    margin-top: 2rem;
+    padding: 11px 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: #A8C5DA;
+    color: white;
+    font-size: 13.5px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(168, 197, 218, 0.3);
+}
+
+.addTransactionBtn:hover {
+    background-color: #94B6CE;
+    box-shadow: 0 4px 12px rgba(148, 182, 206, 0.4);
+}
+
+.addTransactionBtn:active {
+    transform: scale(0.98);
+}

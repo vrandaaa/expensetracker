@@ -1,0 +1,15 @@
+.heading{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.transactionData{
+    display: flex;
+}
+.card{
+    width: 500px;
+    height: max-content;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 16px;
+}

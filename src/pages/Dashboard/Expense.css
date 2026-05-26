@@ -1,0 +1,11 @@
+.expenseConatiner {
+    display: flex; 
+    min-height: 100vh;
+    width: 100%;
+    background-color: #FAFBFC;
+}
+.contentSide{
+    flex: 1;
+    padding: 2.5rem;
+    overflow-y: auto;
+}

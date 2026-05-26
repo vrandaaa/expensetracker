@@ -1,0 +1,209 @@
+import React from 'react'
+import './TransactionForm.css'
+import { useState } from 'react';
+import EmojiPicker from "emoji-picker-react";
+import { toast, ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
+const TransactionForm = ({ fixedType = "" }) => {
+    const today = new Date().toISOString().split("T")[0];
+    const [showForm, setShowForm] = useState(true)
+    const [emoji, setEmoji] = useState(null);
+    const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+    function closeBtnHandler() {
+        setShowForm(!showForm)
+    }
+
+    const [formData, setFormData] = useState({
+        icon: "",
+        title: "",
+        amount: "",
+        type: fixedType,
+        category: "",
+        date: ""
+    });
+
+    function validateForm() {
+
+        if (!formData.icon) {
+            toast.error("Select transaction icon")
+            return false;
+        }
+
+        if (!formData.title.trim()) {
+            toast.error("Enter title")
+            return false;
+        }
+
+        if (!formData.amount.trim()) {
+            toast.error("Enter amount");
+            return false;
+        }
+
+        // only digits allowed
+        const amountRegex = /^\d+$/;
+
+        if (!amountRegex.test(formData.amount)) {
+            toast.error("Amount must contain only digits")
+            return false;
+        }
+
+        // cannot be 0 or negative
+        if (Number(formData.amount) <= 0) {
+            toast.error("Amount must be greater than 0")
+            return false;
+        }
+
+        if (!formData.type.trim()) {
+            toast.error("Select transaction type")
+            return false;
+        }
+
+        if (!formData.category.trim()) {
+            toast.error("Enter category")
+            return false;
+        }
+
+        if (!formData.date) {
+            toast.error("Select date");
+            return false;
+        }
+
+        return true;
+    }
+
+    function handleChange(event) {
+        setFormData(prev => ({
+            ...prev,
+            [event.target.name]: event.target.value
+        }));
+    }
+
+    function handleEmojiClick(emojiData) {
+        setEmoji(emojiData.emoji);
+
+        setFormData(prev => ({
+            ...prev,
+            icon: emojiData.emoji
+        }));
+
+        setShowEmojiPicker(false);
+    }
+
+    function formSubmitHandler(e) {
+        e.preventDefault();
+
+        const rel = validateForm();
+
+        if (rel) {
+
+            // get old data from local storage
+            const existingTransactions =
+                JSON.parse(localStorage.getItem("transactions")) || [];
+
+            // create new transaction object
+            const newTransaction = {
+                id: Date.now(),
+                ...formData
+            };
+
+            // add new transaction
+            const updatedTransactions = [
+                ...existingTransactions,
+                newTransaction
+            ];
+
+            // save back to local storage
+            localStorage.setItem(
+                "transactions",
+                JSON.stringify(updatedTransactions)
+            );
+
+            console.log(updatedTransactions);
+
+            toast.success("Transaction added");
+
+            // clear form
+            setFormData({
+                icon: "",
+                title: "",
+                amount: "",
+                type: "",
+                category: "",
+                date: ""
+            });
+
+            setEmoji(null);
+
+        } else {
+            toast.error("Please fill the form correctly");
+        }
+    }
+
+    return (
+
+        <div className={showForm ? 'modalOverlay' : 'hide'}>
+
+            <div className='transactionCard'>
+
+                <button className='closeBtn' onClick={closeBtnHandler}>✕</button>
+
+                <h2>Add Transaction</h2>
+
+                <form className='transactionForm'>
+
+                    <label>Transaction Icon</label>
+                    <div className='emojiSelector'>
+                        <button type='button' name='icon' className='emojiBtn' onClick={() => setShowEmojiPicker(!showEmojiPicker)}>{emoji}</button>
+                        {showEmojiPicker && (
+                            <div className='pickerContainer'>
+                                <EmojiPicker
+                                    onEmojiClick={handleEmojiClick}
+                                />
+                            </div>
+                        )}
+                    </div>
+
+                    <label>Title</label>
+                    <input name='title' type='text' placeholder='Enter title' onChange={handleChange} value={formData.title} />
+
+                    <label>Amount</label>
+                    <input type='text' name='amount' placeholder='Enter amount' onChange={handleChange} value={formData.amount} />
+
+                    {!fixedType && (
+
+                        <>
+                            <label>Type</label>
+
+                            <select
+                                name='type'
+                                value={formData.type}
+                                onChange={handleChange}
+                            >
+                                <option value="">Select Type</option>
+                                <option value="Income">Income</option>
+                                <option value="Expense">Expense</option>
+                            </select>
+                        </>
+
+                    )}
+
+                    <label>Category</label>
+                    <input type='text' name='category' placeholder='Food / Shopping / Salary' onChange={handleChange} value={formData.category} />
+
+                    <label>Date</label>
+                    <input type='date' name='date' max={today} onChange={handleChange} value={formData.date} />
+
+                    <button className='addBtn' type='submit' onClick={formSubmitHandler}>
+                        Add Transaction
+                    </button>
+
+                </form>
+                <ToastContainer />
+            </div>
+
+        </div >
+    )
+}
+
+export default TransactionForm
