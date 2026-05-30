@@ -1,14 +1,21 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState , useContext} from 'react'
 import NavBar from '../../components/NavBar'
 import ActionCard from '../../components/ActionCard'
 import TransactionForm from '../../components/TransactionForm'
+import TransactionCard
+ from '../../components/TransactionCard'
 import './Income.css'
+import { TransactionContext } from '../../Context/TransactionContext'
+
+
 const Income = () => {
   const [showForm, setShowForm] = useState(false)
-    function addTransactionHandler() {
-      setShowForm(prev => !prev)
-    }
+  function addTransactionHandler() {
+    setShowForm(prev => !prev)
+  }
+  const {transactions} = useContext(TransactionContext);
+  const incomeTransacions = transactions.filter(item => item.type === 'Income');
   return (
     <div className='incomeConatiner'>
       <NavBar />
@@ -20,7 +27,9 @@ const Income = () => {
           onClick={addTransactionHandler}
         />
         {showForm && <TransactionForm fixedType="Income" />}
+        <TransactionCard title={'Recent Incomes'} data={incomeTransacions} />
       </div>
+
     </div>
   )
 }

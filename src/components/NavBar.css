@@ -47,10 +47,6 @@ body {
 .NavbarContainer.collapsed .editIcon {
     display: none;
 }
-/* .NavbarContainer.collapsed .profileImg {
-    width: 55px;
-    height: 55px;
-} */
 /* PROFILE SECTION */
 .profileSection{
     display: flex;

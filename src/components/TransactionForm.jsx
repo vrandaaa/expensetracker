@@ -1,6 +1,7 @@
 import React from 'react'
 import './TransactionForm.css'
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { TransactionContext } from '../Context/TransactionContext';
 import EmojiPicker from "emoji-picker-react";
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -10,6 +11,7 @@ const TransactionForm = ({ fixedType = "" }) => {
     const [showForm, setShowForm] = useState(true)
     const [emoji, setEmoji] = useState(null);
     const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+    const { setTransactions } = useContext(TransactionContext);
     function closeBtnHandler() {
         setShowForm(!showForm)
     }
@@ -96,44 +98,29 @@ const TransactionForm = ({ fixedType = "" }) => {
         const rel = validateForm();
 
         if (rel) {
+            try {
+                setTransactions(prev => [
+                    ...prev,
+                    formData
+                ]);
+                // addTransaction(formData);
+                toast.success("Transaction added");
+                // clear form
+                setFormData({
+                    icon: "",
+                    title: "",
+                    amount: "",
+                    type: "",
+                    category: "",
+                    date: ""
+                });
+                setEmoji(null);
+            }
 
-            // get old data from local storage
-            const existingTransactions =
-                JSON.parse(localStorage.getItem("transactions")) || [];
-
-            // create new transaction object
-            const newTransaction = {
-                id: Date.now(),
-                ...formData
-            };
-
-            // add new transaction
-            const updatedTransactions = [
-                ...existingTransactions,
-                newTransaction
-            ];
-
-            // save back to local storage
-            localStorage.setItem(
-                "transactions",
-                JSON.stringify(updatedTransactions)
-            );
-
-            console.log(updatedTransactions);
-
-            toast.success("Transaction added");
-
-            // clear form
-            setFormData({
-                icon: "",
-                title: "",
-                amount: "",
-                type: "",
-                category: "",
-                date: ""
-            });
-
-            setEmoji(null);
+            catch {
+                toast.error("there is some error sorry")
+                console.log(formData)
+            }
 
         } else {
             toast.error("Please fill the form correctly");
