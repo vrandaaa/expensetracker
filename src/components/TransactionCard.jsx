@@ -1,25 +1,37 @@
 import React from 'react'
 import './TransactionCard.css'
 import TransactionRecords from './TransactionRecords'
-
+import { useState } from 'react'
 const TransactionCard = (props) => {
-  // console.log(data)
 
+  const sortedTransactions = [...props.data].sort(
+    (a, b) => new Date(b.date) - new Date(a.date)
+  );
+  const [showAll, setShowAll] = useState(false);
+  const visibleTransactions = showAll
+    ? sortedTransactions
+    : sortedTransactions.slice(0, 5);
   return (
     <div className='card'>
       <div className='heading'>
         <p>{props.title}</p>
-        <button>See All</button>
-      </div>
+        {
+          props.data.length > 5 && (
+            <button onClick={() => setShowAll(!showAll)}>
+              {showAll ? 'Show Less' : 'Show All'}
+            </button>
+          )
+        }      </div>
       {
         props.data.length === 0 ? (
           <div className='empty'>
             <p>No transactions yet</p>
           </div>
         ) : (
-          props.data.map((i) => (
+          visibleTransactions.map((i) => (
             <TransactionRecords
               key={i.id}
+              id={i.id}
               title={i.title}
               amount={i.amount}
               icon={i.icon}

@@ -41,12 +41,15 @@
     align-items:center;
 
     width:100%;
+    gap:12px;
 }
 
 .titleDate{
     display:flex;
     flex-direction:column;
     gap:4px;
+
+    flex:1;
 }
 
 .titleDate span:first-child{
@@ -94,14 +97,53 @@
 }
 
 .amount svg{
-    font-size:14px;
-}
-.amount svg{
     font-size:15px;
 }
 
-/* Optional colors for arrows */
+/* Income arrow */
 
-.amount svg:first-child{
-    color:#45b26b;
+.income svg{
+    color:#2e9f57;
+}
+
+/* Expense arrow */
+
+.expense svg{
+    color:#e24b4b;
+}
+
+/* Delete icon */
+
+.details{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    width:100%;
+    gap:12px;
+}
+
+.delete{
+    color:#9CA3AF;
+    cursor:pointer;
+
+    font-size:14px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    width:18px;      /* reserve space */
+    opacity:0;       /* hidden */
+
+    transition:.25s ease;
+}
+
+.transactionData:hover .delete{
+    opacity:1;
+}
+
+.delete:hover{
+    color:#EF4444;
+    transform:scale(1.1);
 }

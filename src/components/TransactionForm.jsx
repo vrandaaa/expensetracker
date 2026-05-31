@@ -99,9 +99,14 @@ const TransactionForm = ({ fixedType = "" }) => {
 
         if (rel) {
             try {
+                const newTransaction = {
+                    ...formData,
+                    id: Date.now()
+                };
+
                 setTransactions(prev => [
                     ...prev,
-                    formData
+                    newTransaction
                 ]);
                 // addTransaction(formData);
                 toast.success("Transaction added");
@@ -162,11 +167,7 @@ const TransactionForm = ({ fixedType = "" }) => {
                         <>
                             <label>Type</label>
 
-                            <select
-                                name='type'
-                                value={formData.type}
-                                onChange={handleChange}
-                            >
+                            <select name='type' value={formData.type} onChange={handleChange}>
                                 <option value="">Select Type</option>
                                 <option value="Income">Income</option>
                                 <option value="Expense">Expense</option>

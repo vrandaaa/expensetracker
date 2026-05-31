@@ -58,3 +58,19 @@
 .addTransactionBtn:active {
     transform: scale(0.98);
 }
+.gridLayout {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+.transactionsSection {
+    flex: 2;
+    max-width: 550px;
+}
+
+.chartSection {
+    flex: 1;
+    min-width: 0;
+}

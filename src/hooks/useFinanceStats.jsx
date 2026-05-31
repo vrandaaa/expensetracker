@@ -15,6 +15,5 @@ export function useFinanceStats(){
     }
 
     let balance = (incomeAmount - expenseAmount);
-    const savings = balance;
-    return {incomeAmount , expenseAmount , balance , savings};
+    return {incomeAmount , expenseAmount , balance};
 }

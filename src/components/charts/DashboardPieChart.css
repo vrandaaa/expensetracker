@@ -1,0 +1,110 @@
+.dashboardPieChart {
+    width: 100%;
+    box-sizing: border-box;
+
+    background: #FFFFFF;
+    border-radius: 18px;
+    padding: 1.5rem;
+
+    margin-top: 1.5rem;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+    transition: all 0.3s ease;
+}
+.dashboardPieChart:hover {
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+}
+
+.chartHeading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 1rem;
+}
+
+.chartHeading h3 {
+    margin: 0;
+
+    font-size: 18px;
+    font-weight: 600;
+
+    color: #2F3A45;
+}
+
+.chartSubTitle {
+    font-size: 13px;
+    color: #7B8794;
+}
+
+.chartWrapper {
+    width: 100%;
+    height: 320px;
+}
+
+.noChartData {
+    height: 320px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #7B8794;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+/* Legend Styling */
+
+.recharts-legend-wrapper {
+    font-size: 13px;
+}
+
+.recharts-default-legend {
+    display: flex !important;
+    justify-content: center;
+    gap: 18px;
+}
+
+.recharts-legend-item-text {
+    color: #2F3A45 !important;
+    font-weight: 500;
+}
+
+/* Tooltip Styling */
+
+.recharts-tooltip-wrapper {
+    outline: none;
+}
+
+.recharts-default-tooltip {
+    border-radius: 12px !important;
+    border: none !important;
+
+    background: #FFFFFF !important;
+
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+.recharts-tooltip-label {
+    color: #2F3A45 !important;
+    font-weight: 600;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+
+    .dashboardPieChart {
+        padding: 1rem;
+    }
+
+    .chartWrapper {
+        height: 260px;
+    }
+
+    .chartHeading h3 {
+        font-size: 16px;
+    }
+}

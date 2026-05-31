@@ -1,45 +1,81 @@
-/* Clear default Link underlines/colors */
 .contentSide a {
     text-decoration: none;
+    color: inherit;
 }
 
 .dashboardCard {
-    background-color: #ffffff;
-    border-radius: 14px;
-    padding: 1.5rem;
-    width: 210px;    
-    height: 110px;   
+    background: #ffffff;
+
+    width: 260px;
+    height: 100px;
+
+    border-radius: 18px;
+
+    padding: 1.2rem;
+
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 8px;
-    border: 1px solid #F1F5F9;
-    box-shadow: 0 4px 12px rgba(47, 58, 69, 0.03);
-    transition: all 0.2s ease;
+    align-items: center;
+    gap: 18px;
+
+    border: 1px solid #EEF2F6;
+
+    box-shadow: 0 4px 12px rgba(47, 58, 69, 0.04);
+
+    transition: all 0.25s ease;
+
     cursor: pointer;
-    position: relative;
-    overflow: hidden;
 }
 
 .dashboardCard:hover {
-    transform: translateY(-2px);
-    border-color: #E2E8F0;
-    box-shadow: 0 6px 16px rgba(47, 58, 69, 0.06);
+    transform: translateY(-3px);
+
+    box-shadow: 0 10px 24px rgba(47, 58, 69, 0.08);
+}
+
+/* Icon Circle */
+
+.cardIcon {
+    width: 54px;
+    height: 54px;
+
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 24px;
+
+    flex-shrink: 0;
+
+    background: #f4f7f9;
+}
+
+/* Content */
+
+.cardContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .cardTitle {
-    font-size: 13px;
-    color: #64748B;
-    font-weight: 500;
     margin: 0;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    color: #7B8794;
 }
 
 .cardAmount {
-    font-size: 26px; /* Reduced from 34px for balanced sizing */
+    margin: 4px 0 0 0;
+
+    font-size: 25px;
+    font-weight: 500;
+
     color: #2F3A45;
-    font-weight: 600; /* Replaced aggressive 700 bold weight */
-    margin: 0;
-    letter-spacing: -0.5px;
+
+    line-height: 1;
 }
+
