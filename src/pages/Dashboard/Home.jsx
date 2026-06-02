@@ -10,9 +10,9 @@ import { TransactionContext } from '../../Context/TransactionContext'
 import { useFinanceStats } from '../../hooks/useFinanceStats';
 import DashboardPieChart from '../../components/charts/DashboardPieChart'
 import { FaWallet } from "react-icons/fa";
-import { FaMoneyBillWave } from "react-icons/fa";import { FaReceipt } from "react-icons/fa";
+import { FaMoneyBillWave } from "react-icons/fa";
 import { FaCreditCard } from "react-icons/fa";
-
+import IncomeExpenseBarChart from '../../components/charts/IncomeExpenseBarChart'
 
 const Home = () => {
   const [showForm, setShowForm] = useState(false)
@@ -54,6 +54,7 @@ const Home = () => {
             <DashboardPieChart />
           </div>
         </div>
+        <IncomeExpenseBarChart/>
       </div>
 
     </div>

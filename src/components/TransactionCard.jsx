@@ -10,13 +10,13 @@ const TransactionCard = (props) => {
   const [showAll, setShowAll] = useState(false);
   const visibleTransactions = showAll
     ? sortedTransactions
-    : sortedTransactions.slice(0, 5);
+    : sortedTransactions.slice(0, 4);
   return (
     <div className='card'>
       <div className='heading'>
         <p>{props.title}</p>
         {
-          props.data.length > 5 && (
+          props.data.length > 4 && (
             <button onClick={() => setShowAll(!showAll)}>
               {showAll ? 'Show Less' : 'Show All'}
             </button>
