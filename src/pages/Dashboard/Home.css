@@ -4,6 +4,7 @@
     width: 100%;
     background-color: #FAFBFC;
     overflow: hidden;
+    position: relative;
 }
 
 .contentSide {
@@ -12,7 +13,9 @@
     padding: 2.5rem;
     overflow-y: auto;
 }
-
+.space{
+    margin-top: 1rem;
+}
 /* Subtitle / Welcome Text adjustments */
 .contentSide > p {
     font-size: 20px;

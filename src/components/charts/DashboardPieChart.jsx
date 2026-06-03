@@ -16,8 +16,8 @@ const DashboardPieChart = () => {
     const { incomeAmount, expenseAmount, balance } = useFinanceStats();
 
     const COLORS = [
-        '#6dec9c', // Income
-        '#f88888', // Expense
+        '#0bd455', // Income
+        '#de0e0e', // Expense
         '#83adf1'  // Savings
     ];
 
@@ -76,9 +76,9 @@ const DashboardPieChart = () => {
                             data={pieData}
                             cx="50%"
                             cy="50%"
-                            innerRadius={65}
+                            innerRadius={75}
                             outerRadius={100}
-                            paddingAngle={4}
+                            paddingAngle={1}
                             dataKey="value"
                             nameKey="name"
                             label

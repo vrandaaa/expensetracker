@@ -24,18 +24,28 @@ body {
 .NavbarContainer {
     width: 230px;
     height: 100vh;
+
     background-color: var(--card-bg);
     border-right: 1px solid var(--border);
+
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+
     padding: 22px 0;
     box-sizing: border-box;
+
     flex-shrink: 0;
+
     transition: width 0.3s ease;
+
     overflow: hidden;
-    position: relative;
+
+    position: sticky;
+    top: 0;
+
+    z-index: 1000;
 }
 .NavbarContainer.collapsed {
     width: 80px;

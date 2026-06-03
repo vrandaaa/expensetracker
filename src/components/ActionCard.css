@@ -2,7 +2,7 @@
     width:100%;
     background:white;
 
-    padding:1.5rem 2rem;
+    padding:0.9rem 1.6rem;
 
     border-radius:20px;
 
@@ -12,7 +12,7 @@
 
     box-shadow:0 8px 30px rgba(0,0,0,.05);
 
-    margin-top:2rem;
+    /* margin-top:1rem; */
 }
 
 .actionLeft h2{
@@ -29,7 +29,7 @@
 
 .actionBtn{
     border:none;
-    padding:14px 24px;
+    padding:10px 20px;
 
     border-radius:14px;
 

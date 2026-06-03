@@ -21,7 +21,7 @@ const TransactionForm = ({ fixedType = "" }) => {
         title: "",
         amount: "",
         type: fixedType,
-        category: "",
+        // category: "",
         date: ""
     });
 
@@ -61,10 +61,10 @@ const TransactionForm = ({ fixedType = "" }) => {
             return false;
         }
 
-        if (!formData.category.trim()) {
-            toast.error("Enter category")
-            return false;
-        }
+        // if (!formData.category.trim()) {
+        //     toast.error("Enter category")
+        //     return false;
+        // }
 
         if (!formData.date) {
             toast.error("Select date");
@@ -116,7 +116,7 @@ const TransactionForm = ({ fixedType = "" }) => {
                     title: "",
                     amount: "",
                     type: "",
-                    category: "",
+                    // category: "",
                     date: ""
                 });
                 setEmoji(null);
@@ -176,8 +176,8 @@ const TransactionForm = ({ fixedType = "" }) => {
 
                     )}
 
-                    <label>Category</label>
-                    <input type='text' name='category' placeholder='Food / Shopping / Salary' onChange={handleChange} value={formData.category} />
+                    {/* <label>Category</label>
+                    <input type='text' name='category' placeholder='Food / Shopping / Salary' onChange={handleChange} value={formData.category} /> */}
 
                     <label>Date</label>
                     <input type='date' name='date' max={today} onChange={handleChange} value={formData.date} />

@@ -1,5 +1,5 @@
 .card{
-    width:95%;
+    width:100%;
     box-sizing:border-box;
 
     background:#ffffff;
@@ -76,4 +76,16 @@
     font-size:15px;
 
     font-weight:500;
+}
+.transactionsGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+
+@media(max-width:900px){
+    .transactionsGrid{
+        grid-template-columns:1fr;
+    }
 }

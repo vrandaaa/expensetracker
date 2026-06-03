@@ -12,7 +12,7 @@ const TransactionCard = (props) => {
     ? sortedTransactions
     : sortedTransactions.slice(0, 4);
   return (
-    <div className='card'>
+    <div className={props.grid ? "card gridCard" : "card"}>
       <div className='heading'>
         <p>{props.title}</p>
         {
@@ -21,28 +21,30 @@ const TransactionCard = (props) => {
               {showAll ? 'Show Less' : 'Show All'}
             </button>
           )
-        }      </div>
-      {
-        props.data.length === 0 ? (
-          <div className='empty'>
-            <p>No transactions yet</p>
-          </div>
-        ) : (
-          visibleTransactions.map((i) => (
-            <TransactionRecords
-              key={i.id}
-              id={i.id}
-              title={i.title}
-              amount={i.amount}
-              icon={i.icon}
-              date={i.date}
-              type={i.type}
-              category={i.category}
-            />
-          ))
-        )
-      }
-
+        }
+      </div>
+      <div className={props.grid ? "transactionsGrid" : ""}>
+        {
+          props.data.length === 0 ? (
+            <div className='empty'>
+              <p>No transactions yet</p>
+            </div>
+          ) : (
+            visibleTransactions.map((i) => (
+              <TransactionRecords
+                key={i.id}
+                id={i.id}
+                title={i.title}
+                amount={i.amount}
+                icon={i.icon}
+                date={i.date}
+                type={i.type}
+              // category={i.category}
+              />
+            ))
+          )
+        }
+      </div>
 
     </div>
   )

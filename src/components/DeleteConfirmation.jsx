@@ -1,4 +1,5 @@
 import React from "react";
+import './DeleteConfirmation.css';
 
 const DeleteConfirmation = ({
   isOpen,
@@ -11,35 +12,40 @@ const DeleteConfirmation = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
-      <div className="bg-white rounded-2xl p-6 w-[90%] max-w-md shadow-xl">
-        
-        <h2 className="text-xl font-semibold text-slate-800 mb-2">
+    <div className="deleteOverlay">
+
+      <div className="deleteModal">
+
+        <h2>
           {title}
         </h2>
 
-        <p className="text-slate-500 text-sm mb-6">
+        <p>
           {message}
         </p>
 
-        <div className="flex justify-end gap-3">
-          
+
+        <div className="deleteActions">
+
           <button
             onClick={onClose}
-            className="px-4 py-2 rounded-xl border border-slate-300 text-slate-700 hover:bg-slate-100 transition"
+            className="cancelBtn"
           >
             Cancel
           </button>
 
+
           <button
             onClick={onConfirm}
-            className="px-4 py-2 rounded-xl bg-red-500 text-white hover:bg-red-600 transition"
+            className="deleteBtn"
           >
             Delete
           </button>
 
         </div>
+
       </div>
+
     </div>
   );
 };

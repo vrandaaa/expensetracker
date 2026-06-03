@@ -10,7 +10,7 @@ import Card from '../../components/Card'
 import { FaMoneyBillWave } from "react-icons/fa";
 import { useFinanceStats } from '../../hooks/useFinanceStats'
 import IncomeTrend from '../../components/charts/IncomeTrend'
-import IncomeCategoryChart from '../../components/charts/IncomeCategoryChart'
+import IncomeCategoryChart from '../../../../deletedFiles/IncomeCategoryChart'
 
 const Income = () => {
   const [showForm, setShowForm] = useState(false)
@@ -24,30 +24,29 @@ const Income = () => {
     <div className='incomeConatiner'>
       <NavBar />
       <div className='contentSide'>
-        <Card title="Income" amount={incomeAmount} path="/income" icon={<FaMoneyBillWave size={25} />} />
+        <div className='header'>
+          <Card title="Income" amount={incomeAmount} path="/income" icon={<FaMoneyBillWave size={25} />} />
 
-        <ActionCard
-          title="Manage Income"
-          subtitle="Add salary, freelance and other earnings"
-          btnText="+ Add Income"
-          onClick={addTransactionHandler}
-        />
-        {showForm && <TransactionForm fixedType="Income" />}
-
+          <ActionCard
+            title="Manage Income"
+            subtitle="Add salary, freelance and other earnings"
+            btnText="+ Add Income"
+            onClick={addTransactionHandler}
+          />
+          {showForm && <TransactionForm fixedType="Income" />}
+        </div>
+        <IncomeTrend />
         <div className='transactionAndChart'>
           <div className='transactionSection'>
             <TransactionCard
               title={'Recent Incomes'}
               data={incomeTransacions}
+              grid={true}
             />
-          </div>
-
-          <div className='chartSection'>
-            <IncomeCategoryChart />
           </div>
         </div>
 
-        <IncomeTrend />
+        
       </div>
 
     </div>

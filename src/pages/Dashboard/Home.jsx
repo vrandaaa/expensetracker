@@ -33,7 +33,7 @@ const Home = () => {
           <Card title="Expense" amount={expenseAmount} path="/expense" icon={<FaCreditCard  size={25}/>}/>
           <Card title="Income" amount={incomeAmount} path="/income" icon={<FaMoneyBillWave  size={25}/>}/>
         </div>
-        <div>
+        <div className='space'>
           <ActionCard
             title="Track your finances"
             subtitle="Add and manage your transactions easily"

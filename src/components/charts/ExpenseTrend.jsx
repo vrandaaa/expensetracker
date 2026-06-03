@@ -10,12 +10,18 @@ import {
     CartesianGrid,
     Legend
 } from "recharts";
-import './IncomeTrend.css'
+import './ExpenseTrend.css'
 
-const IncomeTrend = () => {
+const ExpenseTrend = () => {
+    const { expenseTrendData } = useChartData();
+    const formatDate = (dateString) => {
+        const date = new Date(dateString);
 
-    const { incomeTrendData } = useChartData();
-    console.log("checking total", incomeTrendData)
+        return date.toLocaleDateString("en-IN", {
+            day: "numeric",
+            month: "short"
+        });
+    };
     const CustomTooltip = ({ active, payload }) => {
 
         if (!active || !payload || !payload.length) {
@@ -46,27 +52,29 @@ const IncomeTrend = () => {
                 <hr />
 
                 <p>
-                    Total : ₹{data.income}
+                    Total : ₹{data.expense}
                 </p>
             </div>
         );
     };
     return (
-        <div className="incomeTrendCard">
+        <div className="expenseTrendCard">
             <div className='chartHeading'>
-                <h3>Income Trend over the year</h3>
+                <h3>Expense Trend</h3>
             </div>
             <ResponsiveContainer width="100%" height={280}>
-                <LineChart data={incomeTrendData}>
+                <LineChart data={expenseTrendData}>
                     <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="month" />
+                    <XAxis dataKey="date"
+                        tickFormatter={formatDate}
+                    />
                     <YAxis />
-                    <Tooltip content={<CustomTooltip />}/>
+                    <Tooltip content={<CustomTooltip />} />
 
                     <Line
                         type="monotone"
-                        dataKey="income"
-                        stroke="#6dec9c"
+                        dataKey="expense"
+                        stroke="#f992da"
                         strokeWidth={3}
                     />
                 </LineChart>
@@ -75,4 +83,4 @@ const IncomeTrend = () => {
     )
 }
 
-export default IncomeTrend
+export default ExpenseTrend
