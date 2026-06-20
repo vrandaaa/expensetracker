@@ -244,7 +244,15 @@ form span {
 .imageSide:hover .mmoneyImg {
     transform: rotate(10deg) scale(1.05);
 }
+.Toastify__toast-container {
+    z-index: 999999 !important;
+}
 
+.Toastify__toast {
+    border-radius: 12px;
+    font-size: 14px;
+    width: 320px;
+}
 /* Responsive */
 @media (max-width: 1100px) {
     .right-side-text h2 {
@@ -256,14 +264,240 @@ form span {
         width: 250px;
     }
 }
+@media(max-width:600px){
 
-@media (max-width: 900px) {
-    .imageSide {
-        display: none;
+    .Toastify__toast-container {
+        width: 90vw !important;
+        left: 50% !important;
+        transform: translateX(-50%);
+        top: 20px !important;
     }
 
-    .left-side {
-        flex: 1;
-        background-color: var(--powder-petal-3);
+    .Toastify__toast {
+        width: 100% !important;
+        font-size: 12px;
     }
+}
+
+/* ================= MOBILE DESIGN ================= */
+
+@media (max-width:900px){
+
+    .wrapper{
+        min-height:100dvh;
+        height:auto;
+        width:100%;
+        overflow-y:auto;
+        flex-direction:column;
+
+        background:
+        radial-gradient(
+            circle at top,
+            rgba(77,77,241,0.15),
+            transparent 40%
+        ),
+        var(--parchment-2);
+    }
+
+
+    /* keep welcome section */
+    .imageSide{
+        display:flex;
+        width:100%;
+        height:220px;
+        padding:25px 20px 0;
+        order:0;
+    }
+
+
+    .right-side-text{
+        display:block;
+        max-width:350px;
+        z-index:10;
+    }
+
+
+    .right-side-text h2{
+
+        font-size:2rem;
+        letter-spacing:-1px;
+        margin-bottom:10px;
+
+    }
+
+
+    .right-side-text p{
+        font-size:14px;
+    }
+
+
+
+    /* keep images but subtle */
+
+    .imagesGroup{
+        opacity:0.35;
+    }
+
+
+    .billImg,
+    .mmoneyImg{
+
+        width:170px;
+        filter:blur(3px);
+
+    }
+
+
+    .billImg{
+        top:5%;
+        left:-20px;
+    }
+
+
+    .mmoneyImg{
+        bottom:0;
+        right:-20px;
+    }
+
+
+
+    /* form area */
+
+    .left-side{
+
+        width:100%;
+        flex:none;
+        padding:0 18px 30px;
+        background:transparent;
+
+        order:1;
+
+    }
+
+
+
+    .formContainer{
+
+        max-width:420px;
+        padding:28px 22px;
+
+        border-radius:26px;
+
+        background:rgba(255,255,255,0.96);
+
+        box-shadow:
+        0 20px 40px rgba(0,0,0,0.12);
+
+    }
+
+
+
+    .buttons{
+
+        margin-bottom:22px;
+    }
+
+
+
+    .buttons button{
+
+        padding:11px;
+        font-size:14px;
+
+    }
+
+
+
+    form{
+
+        gap:14px;
+
+    }
+
+
+
+    form input{
+
+        padding:13px 14px;
+        font-size:14px;
+
+    }
+
+
+    .submitBtn{
+
+        padding:14px;
+        font-size:14px;
+
+    }
+
+
+    form a{
+
+        font-size:13px;
+
+    }
+
+
+    .Toastify__toast-container{
+
+        top:15px !important;
+        width:90vw !important;
+
+    }
+
+
+    .Toastify__toast{
+
+        width:100% !important;
+        font-size:12px;
+
+    }
+
+}
+
+
+
+
+/* Small phones */
+
+@media(max-width:420px){
+
+
+    .imageSide{
+
+        height:190px;
+
+    }
+
+
+    .right-side-text h2{
+
+        font-size:1.6rem;
+
+    }
+
+
+    .right-side-text p{
+
+        font-size:13px;
+
+    }
+
+
+    .formContainer{
+
+        padding:22px 16px;
+        border-radius:22px;
+
+    }
+
+
+    .buttons button{
+
+        font-size:13px;
+
+    }
+
+
 }

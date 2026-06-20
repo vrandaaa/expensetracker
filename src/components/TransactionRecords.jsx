@@ -7,10 +7,10 @@ import DeleteConfirmation from './DeleteConfirmation';
 
 const TransactionRecords = (props) => {
     const [showDeleteModal, setShowDeleteModal] = useState(false);
-    const { setTransactions } = useContext(TransactionContext)
+    const { deleteTransaction } = useContext(TransactionContext)
 
     function deleteHandler() {
-        setTransactions(prev => prev.filter(item => item.id !== props.id));
+        deleteTransaction(props.id);
         setShowDeleteModal(false);
     }
     function getSuffix(day) {

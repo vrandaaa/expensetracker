@@ -3,7 +3,8 @@
     min-height: 100vh;
     width: 100%;
     background-color: #FAFBFC;
-    overflow: hidden;
+    /* overflow: hidden; */
+    overflow: visible;
     position: relative;
 }
 
@@ -33,9 +34,10 @@
 }
 
 .cardsContainer {
-    display: flex;
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    width:100%;
     gap: 16px;
-    flex-wrap: wrap;
     margin-top: 1.5rem;
 }
 
@@ -76,4 +78,129 @@
 .chartSection {
     flex: 1;
     min-width: 0;
+}
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+
+@media(max-width:768px){
+
+
+    .homeContainer{
+
+        flex-direction:column;
+
+        width:100%;
+        min-height:100vh;
+
+        overflow:visible;
+
+    }
+
+
+
+    .contentSide{
+
+        width:100%;
+
+        height:auto;
+
+        padding:1rem;
+
+        overflow:visible;
+
+        box-sizing:border-box;
+
+    }
+
+
+
+    .contentSide > p{
+
+        font-size:18px;
+
+        margin-top:10px;
+        margin-bottom:1rem;
+
+    }
+
+
+
+    /* cards stack */
+
+    .cardsContainer{
+
+        display:grid;
+
+        grid-template-columns:1fr;
+
+        gap:12px;
+
+        margin-top:1rem;
+
+    }
+
+
+
+    /* action card */
+
+    .space{
+
+        margin-top:1rem;
+
+    }
+
+
+
+
+    /*
+       Transactions + chart
+    */
+
+    .gridLayout{
+
+        display:flex;
+
+        flex-direction:column;
+
+        width:100%;
+
+        gap:15px;
+
+        margin-top:1rem;
+
+    }
+
+
+
+    .transactionsSection{
+
+        width:100%;
+
+        max-width:none;
+
+    }
+
+
+
+    .chartSection{
+
+        width:100%;
+
+    }
+
+
+
+    /*
+      charts take full width
+    */
+
+    .chartSection > *{
+
+        width:100%;
+
+    }
+
+
+
 }

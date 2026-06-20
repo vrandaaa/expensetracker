@@ -62,23 +62,27 @@ const ExpenseTrend = () => {
             <div className='chartHeading'>
                 <h3>Expense Trend</h3>
             </div>
-            <ResponsiveContainer width="100%" height={280}>
-                <LineChart data={expenseTrendData}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="date"
-                        tickFormatter={formatDate}
-                    />
-                    <YAxis />
-                    <Tooltip content={<CustomTooltip />} />
+            {
+                expenseTrendData.length === 0 ? <p className='empty'>No financial data available</p> :
 
-                    <Line
-                        type="monotone"
-                        dataKey="expense"
-                        stroke="#f992da"
-                        strokeWidth={3}
-                    />
-                </LineChart>
-            </ResponsiveContainer>
+                    <ResponsiveContainer width="100%" height={280}>
+                        <LineChart data={expenseTrendData}>
+                            <CartesianGrid strokeDasharray="3 3" />
+                            <XAxis dataKey="date"
+                                tickFormatter={formatDate}
+                            />
+                            <YAxis />
+                            <Tooltip content={<CustomTooltip />} />
+
+                            <Line
+                                type="monotone"
+                                dataKey="expense"
+                                stroke="#f992da"
+                                strokeWidth={3}
+                            />
+                        </LineChart>
+                    </ResponsiveContainer>
+            }
         </div>
     )
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import './Auth.css'
 import bill from '../../assets/bill.jpg'
 import money from '../../assets/money.jpg'
@@ -7,16 +7,26 @@ import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { useNavigate } from 'react-router-dom'
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { AuthContext } from '../../Context/AuthContext';
+import { useEffect } from 'react';
+
 
 const LoginSignup = () => {
   const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(true)
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [name, setName] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
   const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword,setShowConfirmPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const { login, isLoggedIn } = useContext(AuthContext);
 
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate("/home");
+    }
+  }, [isLoggedIn]);
   const validateEmail = (value) => {
     const regex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
     const result = regex.test(value);
@@ -55,15 +65,21 @@ const LoginSignup = () => {
   function loginHandler(e) {
     e.preventDefault();
     const isValid = validateForm();
-    if (isValid){
+    if (isValid) {
+      login();
       toast.success("Login Successfull!")
       setTimeout(() => {
-        navigate("home");
-      }, 1500);}
+        navigate("/home");
+      }, 1000);
+    }
   }
 
   function signupHandler(e) {
     e.preventDefault();
+    if (!name.trim()) {
+      toast.error("Please enter name");
+      return;
+    }
     const isValid = validateForm();
     if (!isValid) return;
     if (password !== confirmPassword) {
@@ -74,8 +90,9 @@ const LoginSignup = () => {
     toast.success("SignUp Successfull!")
 
     setTimeout(() => {
+      login();
       navigate("/home");
-    }, 1500);
+    }, 1000);
 
   }
   return (
@@ -91,8 +108,8 @@ const LoginSignup = () => {
               <form action="" onSubmit={loginHandler} noValidate>
                 <input type="email" placeholder='Enter Email' value={email} onChange={(e) => setEmail(e.target.value)} />
                 <div className='passwordField'>
-                  <input type={!showPassword?"password":"text"} placeholder='Enter Password' value={password} onChange={(e) => setPassword(e.target.value)} />
-                  <span className='eyeIcon' onClick={() => setShowPassword(!showPassword)}> {showPassword ? <FaEye />: <FaEyeSlash />  }</span>
+                  <input type={!showPassword ? "password" : "text"} placeholder='Enter Password' value={password} onChange={(e) => setPassword(e.target.value)} />
+                  <span className='eyeIcon' onClick={() => setShowPassword(!showPassword)}> {showPassword ? <FaEye /> : <FaEyeSlash />}</span>
                 </div>
                 <a href='#'>Forgot Passoword?</a>
                 <button className='submitBtn' type='submit'>Login</button>
@@ -104,14 +121,15 @@ const LoginSignup = () => {
           {!isLogin ?
             (
               <form action="" onSubmit={signupHandler} noValidate>
+                <input type="text" placeholder='Enter Name' value={name} onChange={(e) => setName(e.target.value)} />
                 <input type="email" placeholder='Enter Email' value={email} onChange={(e) => setEmail(e.target.value)} />
                 <div className='passwordField'>
                   <input type={showPassword ? 'text' : 'password'} placeholder='Enter Password' value={password} onChange={(e) => setPassword(e.target.value)} />
-                  <span className='eyeIcon' onClick={() => setShowPassword(!showPassword)}> {showPassword ? <FaEye /> :<FaEyeSlash /> }</span>
-                </div>                
+                  <span className='eyeIcon' onClick={() => setShowPassword(!showPassword)}> {showPassword ? <FaEye /> : <FaEyeSlash />}</span>
+                </div>
                 <div className='passwordField'>
                   <input type={showConfirmPassword ? 'text' : 'password'} placeholder='Confirm Password' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
-                  <span className='eyeIcon' onClick={() => setShowConfirmPassword(!showConfirmPassword)}> {showConfirmPassword? <FaEye /> : <FaEyeSlash />}</span>
+                  <span className='eyeIcon' onClick={() => setShowConfirmPassword(!showConfirmPassword)}> {showConfirmPassword ? <FaEye /> : <FaEyeSlash />}</span>
                 </div>
                 <button className='submitBtn' type='submit'>SignUp</button>
                 <a href='#'>Already a user? Please - <span onClick={() => setIsLogin(true)}>Login</span></a>
@@ -132,7 +150,15 @@ const LoginSignup = () => {
           <img src={money} alt="Money and POS" className="mmoneyImg" />
         </div>
       </div>
-      <ToastContainer />
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        pauseOnHover
+        theme="light"
+      />
     </div>
   )
 }

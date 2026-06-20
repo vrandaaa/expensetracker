@@ -1,7 +1,7 @@
 .card{
     width:100%;
     box-sizing:border-box;
-
+    
     background:#ffffff;
 
     padding:1rem;
@@ -88,4 +88,78 @@
     .transactionsGrid{
         grid-template-columns:1fr;
     }
+}
+/* =========================
+   RESPONSIVE
+========================= */
+
+
+@media(max-width:900px){
+
+    .card{
+
+        padding:1rem;
+
+        margin-top:1rem;
+
+        border-radius:18px;
+
+    }
+
+
+    .transactionsGrid{
+
+        grid-template-columns:1fr;
+
+        gap:12px;
+
+    }
+
+}
+
+
+
+
+@media(max-width:600px){
+
+
+    .card{
+
+        width:100%;
+
+        padding:.8rem;
+
+    }
+
+
+
+    .heading{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:10px;
+
+    }
+
+
+
+    .heading p{
+
+        font-size:16px;
+
+    }
+
+
+
+    .heading button{
+
+        width:100%;
+
+        padding:10px;
+
+    }
+
+
 }

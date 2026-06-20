@@ -34,23 +34,140 @@
 }
 
 /* Tablet */
-@media (max-width: 1100px) {
-    .transactionAndChart {
-        flex-direction: column;
+/* =========================
+   RESPONSIVE
+========================= */
+
+
+/* Tablet */
+@media(max-width:1100px){
+
+    .header{
+
+        flex-direction:column;
+
+        gap:1rem;
+
     }
 
-    .chartSection {
-        min-width: 100%;
+
+    .transactionAndChart{
+
+        flex-direction:column;
+
     }
+
+
+    .transactionSection{
+
+        width:100%;
+
+    }
+
 }
 
+
+
+
 /* Mobile */
-@media (max-width: 768px) {
-    .contentSide {
-        padding: 1rem;
+
+@media(max-width:768px){
+
+
+    .incomeConatiner{
+
+        flex-direction:column;
+
+        min-height:100vh;
+
     }
 
-    .transactionAndChart {
-        gap: 16px;
+
+
+    .contentSide{
+
+        padding:1rem;
+
+        width:100%;
+
+        box-sizing:border-box;
+
     }
+
+
+
+    .header{
+
+        flex-direction:column;
+
+        gap:14px;
+
+    }
+
+
+
+    .transactionAndChart{
+
+        flex-direction:column;
+
+        gap:12px;
+
+    }
+
+
+
+    .transactionSection{
+
+        width:100%;
+
+    }
+
+
+
+    .chartSection{
+
+        min-width:0;
+
+        width:100%;
+
+    }
+
+
+
+    /* chart card spacing */
+
+    .incomeTrendCard{
+
+        width:100%;
+
+        overflow:hidden;
+
+    }
+
+
+}
+
+
+
+
+/* Small phones */
+
+@media(max-width:420px){
+
+
+    .contentSide{
+
+        padding:.8rem;
+
+    }
+
+
+
+    .header{
+
+        gap:12px;
+
+    }
+
+
 }

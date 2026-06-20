@@ -10,7 +10,7 @@ import Card from '../../components/Card'
 import { FaMoneyBillWave } from "react-icons/fa";
 import { useFinanceStats } from '../../hooks/useFinanceStats'
 import IncomeTrend from '../../components/charts/IncomeTrend'
-import IncomeCategoryChart from '../../../../deletedFiles/IncomeCategoryChart'
+// import IncomeCategoryChart from '../../../../deletedFiles/IncomeCategoryChart'
 
 const Income = () => {
   const [showForm, setShowForm] = useState(false)

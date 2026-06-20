@@ -15,7 +15,19 @@
 .expenseTrendCard:hover {
     box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
 }
+.empty{
+    display:flex;
+    justify-content:center;
+    align-items:center;
 
+    padding:2rem;
+
+    color:#8B95A1;
+
+    font-size:15px;
+
+    font-weight:500;
+}
 .expenseTrendHeader {
     margin-bottom: 1rem;
 }

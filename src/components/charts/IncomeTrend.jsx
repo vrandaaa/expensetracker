@@ -33,7 +33,7 @@ const IncomeTrend = () => {
                     boxShadow: "0 4px 12px rgba(0,0,0,0.1)"
                 }}
             >
-                <p>{data.date}</p>
+                <p>{formatDate(data.date)}</p>
 
                 {
                     data.breakdown.map((item, index) => (
@@ -51,28 +51,45 @@ const IncomeTrend = () => {
             </div>
         );
     };
+    const formatDate = (dateString) => {
+        const date = new Date(dateString);
+
+        return date.toLocaleDateString("en-IN", {
+            day: "numeric",
+            month: "short"
+        });
+    };
     return (
         <div className="incomeTrendCard">
             <div className='chartHeading'>
                 <h3>Income Trend over the year</h3>
             </div>
-            <ResponsiveContainer width="100%" height={280}>
-                <LineChart data={incomeTrendData}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="month" />
-                    <YAxis />
-                    <Tooltip content={<CustomTooltip />}/>
+            {
+                incomeTrendData.length === 0 ? <p className='empty'>No financial data available</p> :
+                    < ResponsiveContainer width="100%" height={280}>
+                        <LineChart data={incomeTrendData}>
+                            <CartesianGrid strokeDasharray="3 3" />
+                            <XAxis
+                                dataKey="date"
+                                tickFormatter={formatDate}
+                            />
+                            <YAxis />
+                            <Tooltip content={<CustomTooltip />} />
 
-                    <Line
-                        type="monotone"
-                        dataKey="income"
-                        stroke="#6dec9c"
-                        strokeWidth={3}
-                    />
-                </LineChart>
-            </ResponsiveContainer>
-        </div>
+                            <Line
+                                type="monotone"
+                                dataKey="income"
+                                stroke="#6dec9c"
+                                strokeWidth={3}
+                            />
+                        </LineChart>
+                    </ResponsiveContainer>
+
+            }
+
+
+        </div >
     )
 }
 
-export default IncomeTrend
+export default IncomeTrend;

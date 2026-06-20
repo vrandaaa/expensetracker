@@ -11,7 +11,7 @@ const TransactionForm = ({ fixedType = "" }) => {
     const [showForm, setShowForm] = useState(true)
     const [emoji, setEmoji] = useState(null);
     const [showEmojiPicker, setShowEmojiPicker] = useState(false);
-    const { setTransactions } = useContext(TransactionContext);
+    const { addTransaction } = useContext(TransactionContext);
     function closeBtnHandler() {
         setShowForm(!showForm)
     }
@@ -19,7 +19,7 @@ const TransactionForm = ({ fixedType = "" }) => {
     const [formData, setFormData] = useState({
         icon: "",
         title: "",
-        amount: "",
+        amount: Number(),
         type: fixedType,
         // category: "",
         date: ""
@@ -37,7 +37,7 @@ const TransactionForm = ({ fixedType = "" }) => {
             return false;
         }
 
-        if (!formData.amount.trim()) {
+        if (!formData.amount) {
             toast.error("Enter amount");
             return false;
         }
@@ -61,11 +61,6 @@ const TransactionForm = ({ fixedType = "" }) => {
             return false;
         }
 
-        // if (!formData.category.trim()) {
-        //     toast.error("Enter category")
-        //     return false;
-        // }
-
         if (!formData.date) {
             toast.error("Select date");
             return false;
@@ -77,7 +72,11 @@ const TransactionForm = ({ fixedType = "" }) => {
     function handleChange(event) {
         setFormData(prev => ({
             ...prev,
-            [event.target.name]: event.target.value
+            [event.target.name]:
+                event.target.name === 'amount'
+                    ? Number(event.target.value)
+                    : event.target.value
+
         }));
     }
 
@@ -99,23 +98,14 @@ const TransactionForm = ({ fixedType = "" }) => {
 
         if (rel) {
             try {
-                const newTransaction = {
-                    ...formData,
-                    id: Date.now()
-                };
-
-                setTransactions(prev => [
-                    ...prev,
-                    newTransaction
-                ]);
-                // addTransaction(formData);
+                addTransaction(formData);
                 toast.success("Transaction added");
                 // clear form
                 setFormData({
                     icon: "",
                     title: "",
                     amount: "",
-                    type: "",
+                    type: fixedType,
                     // category: "",
                     date: ""
                 });
@@ -123,8 +113,8 @@ const TransactionForm = ({ fixedType = "" }) => {
             }
 
             catch {
-                toast.error("there is some error sorry")
-                console.log(formData)
+                toast.error("there is some error sorry");
+                console.log(formData);
             }
 
         } else {
@@ -187,7 +177,15 @@ const TransactionForm = ({ fixedType = "" }) => {
                     </button>
 
                 </form>
-                <ToastContainer />
+                <ToastContainer
+                    position="top-right"
+                    autoClose={2000}
+                    hideProgressBar={true}
+                    newestOnTop
+                    closeOnClick
+                    pauseOnHover
+                    toastClassName="customToast"
+                />
             </div>
 
         </div >
